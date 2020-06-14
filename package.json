@@ -1,6 +1,6 @@
 {
     "name": "amn-store",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Amn Store provides centralised key-value storage at the Request object.",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
