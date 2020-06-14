@@ -1,0 +1,40 @@
+{
+    "name": "amn-store",
+    "version": "1.0.0",
+    "description": "Amn Store provides centralised key-value storage within the Request object.",
+    "main": "./build/index.js",
+    "types": "./build/index.d.ts",
+    "files": [
+        "build/**/*"
+    ],
+    "scripts": {
+        "clean": "del ./build/*",
+        "build": "npm run clean && tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mze-runner/amn-store.git"
+    },
+    "keywords": [
+        "nodejs",
+        "express",
+        "store"
+    ],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mze-runner/amn-store/issues"
+    },
+    "homepage": "https://github.com/mze-runner/amn-store#readme",
+    "devDependencies": {
+        "@types/express": "^4.17.6",
+        "del-cli": "^3.0.1",
+        "typescript": "^3.9.5"
+    },
+    "peerDependencies": {
+        "amn-error": ">= 0.0.3"
+    },
+    "dependencies": {
+        "amn-error": ">= 0.0.3"
+    }
+}
