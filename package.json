@@ -32,9 +32,7 @@
         "typescript": "^3.9.5"
     },
     "peerDependencies": {
-        "amn-error": ">= 0.0.3"
+        "express": ">= 4.17.0"
     },
-    "dependencies": {
-        "amn-error": ">= 0.0.3"
-    }
+    "dependencies": {}
 }

@@ -1,6 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import { error } from 'amn-error';
-// import { AMN_STORE_CONST } from 'Amn';
 const AMN_STORE_CONST = 'amnrequeststore';
 interface IStoreAccess {
     name: string;
@@ -55,24 +53,24 @@ export const push = (
  * @param {string} name object name
  * @param {boolean} strict strict mode, if object not found, raise an exception
  */
-export const pullAny = (
+export const pull = (
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | object => {
     const isExists = req[AMN_STORE_CONST]?.store.has(name);
     if (strict && !isExists) {
-        throw error(404, 'NOT_FOUND', 'AMN: not such data to find');
+        throw new Error(`AMN Store: key ${name} is not found in the store.`);
     }
     return !isExists ? undefined : req[AMN_STORE_CONST]?.store.get(name);
 };
 
-export const pull = <T>(
+export const pullts = <T>(
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | T => {
     const isExists = req[AMN_STORE_CONST]?.store.has(name);
     if (strict && !isExists) {
-        throw error(404, 'NOT_FOUND', 'AMN: not such data to find');
+        throw new Error(`AMN Store: key ${name} is not found in the store.`);
     }
     return !isExists ? undefined : (req[AMN_STORE_CONST]?.store.get(name) as T);
 };
@@ -85,26 +83,26 @@ export const pull = <T>(
  * @param {string} name object name
  * @param {boolean} strict strict mode, if object not found, raise an exception
  */
-export const popAny = (
+export const pop = (
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | any => {
     const isExists = req[AMN_STORE_CONST]?.store.has(name);
     if (strict && !isExists) {
-        throw error(404, 'NOT_FOUND', 'AMN: not such data to find');
+        throw new Error(`AMN Store: key ${name} is not found in the store.`);
     }
     const obj = req[AMN_STORE_CONST]?.store.get(name);
     req[AMN_STORE_CONST]?.store.delete(name);
     return !isExists ? undefined : obj;
 };
 
-export const pop = <T>(
+export const popts = <T>(
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | T => {
     const isExists = req[AMN_STORE_CONST]?.store.has(name);
     if (strict && !isExists) {
-        throw error(404, 'NOT_FOUND', 'AMN: not such data to find');
+        throw new Error(`AMN Store: key ${name} is not found in the store.`);
     }
     const obj = req[AMN_STORE_CONST]?.store.get(name) as T;
     req[AMN_STORE_CONST]?.store.delete(name);
