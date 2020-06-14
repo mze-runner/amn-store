@@ -81,7 +81,7 @@ const myConnectMiddleware = (req, res, next) => {
 
 #### `pull` vs `pop`
 
-`pull` and `pop` function are identical how you should call it. The only difference is behind the scene. `pop` function remove object from the store one you extract it.
+`pull` and `pop` function are identical how you should call it. The only difference is behind the scene. `pop` function remove object from the store once you extract it.
 
 ## Compatibility with TypeScript
 
