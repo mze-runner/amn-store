@@ -1,16 +1,16 @@
 # AMN Store
 
-Amn Store or Request store is a tiny module build on top of express to allow you to centralize and manage your data under Request object and pass it through middleware chain.
+Amn Store or Request store is a tiny module build on top of [express](https://expressjs.com/) to allow you to centralize and manage your data under Request object and pass it through middleware chain.
 
-> Please note Amn Store is tightly coupled with [express](#https://expressjs.com/)
+> Please note Amn Store is tightly-coupled with [express](#https://expressjs.com/)
 
 ## Initialization
 
 Before use you have to init the storage in your middleware chain.
 
 ```javascript
-import express from 'express';
-import * as store from 'amn-store';
+const express = require('express');
+const store = require('amn-store');
 
 const app = express();
 
@@ -81,15 +81,15 @@ const myConnectMiddleware = (req, res, next) => {
 
 #### `pull` vs `pop`
 
-`pull` and `pop` function are identical how you should call it. The only difference is behind the scene. `pop` function remove object from the store once you extract it.
+`pull` and `pop` function are identical signature wise. The only difference is behind the scene. `pop` function remove object from the store once you extract it.
 
 ## Compatibility with TypeScript
 
-In order to support types Amn Store provides `typescript` version of `pull` and `pop` functions to help to set a type of object at extract from store.
+In order to support types `Amn Store` provides `typescript` version of `pull` and `pop` functions to help to cast a type of object at extract from store.
 
 `pullts` and `popts`, both works in the same way as javascript brothers, but you have to supply object interface at call.
 
-```javascript
+```typescript
 import { Request, Response, NextFunction } from 'express';
 import * as store from 'amn-store';
 

@@ -22,7 +22,7 @@ const _checkSymbol = (object: Request | Response, name: string) => {
     return arr.indexOf(name) > -1;
 };
 
-export const init = (req: Request, res: Response, next: NextFunction) => {
+const init = (req: Request, res: Response, next: NextFunction) => {
     if (_checkSymbol(req, AMN_STORE_CONST)) {
         delete req[AMN_STORE_CONST];
     }
@@ -39,7 +39,7 @@ export const init = (req: Request, res: Response, next: NextFunction) => {
  * @param {object} data a JSON object to store
  */
 
-export const push = (
+const push = (
     req: Request,
     { name, data }: { name: string; data: any }
 ): void => {
@@ -53,7 +53,7 @@ export const push = (
  * @param {string} name object name
  * @param {boolean} strict strict mode, if object not found, raise an exception
  */
-export const pull = (
+const pull = (
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | object => {
@@ -64,7 +64,7 @@ export const pull = (
     return !isExists ? undefined : req[AMN_STORE_CONST]?.store.get(name);
 };
 
-export const pullts = <T>(
+const pullts = <T>(
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | T => {
@@ -83,7 +83,7 @@ export const pullts = <T>(
  * @param {string} name object name
  * @param {boolean} strict strict mode, if object not found, raise an exception
  */
-export const pop = (
+const pop = (
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | any => {
@@ -96,7 +96,7 @@ export const pop = (
     return !isExists ? undefined : obj;
 };
 
-export const popts = <T>(
+const popts = <T>(
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | T => {
@@ -108,3 +108,5 @@ export const popts = <T>(
     req[AMN_STORE_CONST]?.store.delete(name);
     return !isExists ? undefined : obj;
 };
+
+export default { init, push, pull, pullts, pop, popts };

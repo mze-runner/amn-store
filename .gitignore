@@ -2,7 +2,7 @@
 /config/secret.js
 /certs
 
-/build
+build
 .DS_store
 
 # Logs
