@@ -1,12 +1,12 @@
 # AMN Store
 
-Amn Store or Request store is a tiny module build on top of [express](https://expressjs.com/) to allow you to centralize and manage your data under Request object and pass it through middleware chain.
+Amn Store or Request store is a tiny module build on top of [express](https://expressjs.com/) to allow you to centralize and manage your data under Request object and pass it through the middleware chain.
 
 > Please note Amn Store is tightly-coupled with [express](#https://expressjs.com/)
 
 ## Initialization
 
-Before use you have to init the storage in your middleware chain.
+Before use, you have to init the storage in your middleware chain.
 
 ```javascript
 const express = require('express');
@@ -17,7 +17,7 @@ const app = express();
 app.use(store.init);
 ```
 
-> Please note `store.init` must be put into middleware chain before your routers
+> Please note `store.init` must be put into middleware chain before your routers.
 
 ## Usage
 
@@ -48,7 +48,13 @@ const middlewareTwo = (req, res, next) => {
 
 ### Store a JSON object
 
-To store an object you you need to call `push` and project the Request object, name (a string constant) and JSON object itself.
+To place an object into the store, you can utilize `push` function. The function has the following signature.
+
+`store.pull(req, { name: string, data: object})`
+
+-   req, express Request object
+-   name, a string that identifies your data within the store.
+-   data, JSON object to place in the store
 
 ```javascript
 const store = require('amn-store');
@@ -62,7 +68,7 @@ const myConnectMiddleware = (req, res, next) => {
 
 ### Retrieve from store
 
-There are two options how you can pull you data from the store. By means of `pull` or `pop` function.
+There are two options on how to extract data from the store. Utilizing `pull` or `pop` functions.
 
 ```javascript
 const store = require('amn-store');
@@ -81,11 +87,11 @@ const myConnectMiddleware = (req, res, next) => {
 
 #### `pull` vs `pop`
 
-`pull` and `pop` function are identical signature wise. The only difference is behind the scene. `pop` function remove object from the store once you extract it.
+`pull` and `pop` function are identical signature wise. `pop` function remove object from the store once you extract it.
 
 ## Compatibility with TypeScript
 
-In order to support types `Amn Store` provides `typescript` version of `pull` and `pop` functions to help to cast a type of object at extract from store.
+In order to support types `Amn Store` provides `typescript` version of `pull` and `pop` functions to help to cast a type of object at extractions from the store.
 
 `pullts` and `popts`, both works in the same way as javascript brothers, but you have to supply object interface at call.
 
