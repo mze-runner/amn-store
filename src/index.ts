@@ -53,16 +53,6 @@ const push = (
  * @param {string} name object name
  * @param {boolean} strict strict mode, if object not found, raise an exception
  */
-// const pull = (
-//     req: Request,
-//     { name, strict = true }: IStoreAccess
-// ): undefined | object => {
-//     const isExists = req[AMN_STORE_CONST]?.store.has(name);
-//     if (strict && !isExists) {
-//         throw new Error(`AMN Store: key ${name} is not found in the store.`);
-//     }
-//     return !isExists ? undefined : req[AMN_STORE_CONST]?.store.get(name);
-// };
 
 const pull = <T>(
     req: Request,
@@ -83,18 +73,6 @@ const pull = <T>(
  * @param {string} name object name
  * @param {boolean} strict strict mode, if object not found, raise an exception
  */
-// const pop = (
-//     req: Request,
-//     { name, strict = true }: IStoreAccess
-// ): undefined | any => {
-//     const isExists = req[AMN_STORE_CONST]?.store.has(name);
-//     if (strict && !isExists) {
-//         throw new Error(`AMN Store: key ${name} is not found in the store.`);
-//     }
-//     const obj = req[AMN_STORE_CONST]?.store.get(name);
-//     req[AMN_STORE_CONST]?.store.delete(name);
-//     return !isExists ? undefined : obj;
-// };
 
 const pop = <T>(
     req: Request,
@@ -110,3 +88,28 @@ const pop = <T>(
 };
 
 export default { init, push, pull, pop };
+export { init, push, pull, pop };
+
+// const pop = (
+//     req: Request,
+//     { name, strict = true }: IStoreAccess
+// ): undefined | any => {
+//     const isExists = req[AMN_STORE_CONST]?.store.has(name);
+//     if (strict && !isExists) {
+//         throw new Error(`AMN Store: key ${name} is not found in the store.`);
+//     }
+//     const obj = req[AMN_STORE_CONST]?.store.get(name);
+//     req[AMN_STORE_CONST]?.store.delete(name);
+//     return !isExists ? undefined : obj;
+// };
+
+// const pull = (
+//     req: Request,
+//     { name, strict = true }: IStoreAccess
+// ): undefined | object => {
+//     const isExists = req[AMN_STORE_CONST]?.store.has(name);
+//     if (strict && !isExists) {
+//         throw new Error(`AMN Store: key ${name} is not found in the store.`);
+//     }
+//     return !isExists ? undefined : req[AMN_STORE_CONST]?.store.get(name);
+// };
