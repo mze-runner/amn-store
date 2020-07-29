@@ -53,18 +53,18 @@ const push = (
  * @param {string} name object name
  * @param {boolean} strict strict mode, if object not found, raise an exception
  */
-const pull = (
-    req: Request,
-    { name, strict = true }: IStoreAccess
-): undefined | object => {
-    const isExists = req[AMN_STORE_CONST]?.store.has(name);
-    if (strict && !isExists) {
-        throw new Error(`AMN Store: key ${name} is not found in the store.`);
-    }
-    return !isExists ? undefined : req[AMN_STORE_CONST]?.store.get(name);
-};
+// const pull = (
+//     req: Request,
+//     { name, strict = true }: IStoreAccess
+// ): undefined | object => {
+//     const isExists = req[AMN_STORE_CONST]?.store.has(name);
+//     if (strict && !isExists) {
+//         throw new Error(`AMN Store: key ${name} is not found in the store.`);
+//     }
+//     return !isExists ? undefined : req[AMN_STORE_CONST]?.store.get(name);
+// };
 
-const pullts = <T>(
+const pull = <T>(
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | T => {
@@ -83,20 +83,20 @@ const pullts = <T>(
  * @param {string} name object name
  * @param {boolean} strict strict mode, if object not found, raise an exception
  */
-const pop = (
-    req: Request,
-    { name, strict = true }: IStoreAccess
-): undefined | any => {
-    const isExists = req[AMN_STORE_CONST]?.store.has(name);
-    if (strict && !isExists) {
-        throw new Error(`AMN Store: key ${name} is not found in the store.`);
-    }
-    const obj = req[AMN_STORE_CONST]?.store.get(name);
-    req[AMN_STORE_CONST]?.store.delete(name);
-    return !isExists ? undefined : obj;
-};
+// const pop = (
+//     req: Request,
+//     { name, strict = true }: IStoreAccess
+// ): undefined | any => {
+//     const isExists = req[AMN_STORE_CONST]?.store.has(name);
+//     if (strict && !isExists) {
+//         throw new Error(`AMN Store: key ${name} is not found in the store.`);
+//     }
+//     const obj = req[AMN_STORE_CONST]?.store.get(name);
+//     req[AMN_STORE_CONST]?.store.delete(name);
+//     return !isExists ? undefined : obj;
+// };
 
-const popts = <T>(
+const pop = <T>(
     req: Request,
     { name, strict = true }: IStoreAccess
 ): undefined | T => {
@@ -109,4 +109,4 @@ const popts = <T>(
     return !isExists ? undefined : obj;
 };
 
-export default { init, push, pull, pullts, pop, popts };
+export default { init, push, pull, pop };

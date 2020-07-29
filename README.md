@@ -88,31 +88,3 @@ const myConnectMiddleware = (req, res, next) => {
 #### `pull` vs `pop`
 
 `pull` and `pop` function are identical signature wise. `pop` function remove object from the store once you extract it.
-
-## Compatibility with TypeScript
-
-In order to support types `Amn Store` provides `typescript` version of `pull` and `pop` functions to help to cast a type of object at extractions from the store.
-
-`pullts` and `popts`, both works in the same way as javascript brothers, but you have to supply object interface at call.
-
-```typescript
-import { Request, Response, NextFunction } from 'express';
-import * as store from 'amn-store';
-
-declare interface IMyObject {
-    one: string
-    two: string
-}
-
-export const myMiddleware = (req: Request, res: Response, next: NextFunction) => {
-    // pull retrieve an object, but does not delete it on call
-    const myObject = store.pullts<IMyObject>(req, { name: 'MY_OBJECT_NAME' });
-    // restriction lifted, ignore if key si missing in the store.
-    const myObject = store.pullts<IMyObject>(req, { name: 'MY_OBJECT_NAME' strict: false });
-
-    // pop remove object from the store on call.
-    const myObject = store.popts<IMyObject>(req, { name: 'MY_OBJECT_NAME' }
-    // restriction lifted, ignore if key si missing in the store.
-    const myObject = store.popts<IMyObject>(req, { name: 'MY_OBJECT_NAME', strict: false });
-};
-```
