@@ -36,14 +36,14 @@ const init = (req: Request, res: Response, next: NextFunction) => {
  * Store a JSON object into amn request
  * @param {object} req request object from express connect middleware
  * @param {string} name string name of a reference
- * @param {object} data a JSON object to store
+ * @param {object} payload a JSON object to store
  */
 
 const push = (
     req: Request,
-    { name, data }: { name: string; data: any }
+    { name, payload }: { name: string; payload: any }
 ): void => {
-    req[AMN_STORE_CONST]?.store.set(name, data);
+    req[AMN_STORE_CONST]?.store.set(name, payload);
 };
 
 /**
